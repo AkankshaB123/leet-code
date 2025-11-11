@@ -1,0 +1,23 @@
+Unique differences in INCLUDE vs FIXED LOD
+
+“When do I need the calculation to automatically adjust to the dimensions in the view — and still compute at a finer granularity than the view — without locking it down?”
+
+1. When Do I Need the Calculation to Respect the View's Dimension
+
+Example: Average Sales per Order - DYNAMC BY THE VIEW 
+- Business Use-case:
+- I want to see average order value when the user changes the view between Category, Region, or Segment.
+{INCLUDE [Order ID] : SUM([Sales])}
+
+- This recalculates correctly regardless of what dimensions are on the view.
+- When the user adds or removes dimensions, the AOV still stays meaningful.
+
+---------------------------------------------------------------------------------------------------------
+
+{FIXED [Order ID] : SUM([Sales])}
+Works, but it’s locked.
+
+Business Impact:
+Perfect for dashboards where users pivot dimensions — e.g., “AOV by Region” or “AOV by Product Category” — and you want the measure to adapt dynamically.
+
+More Details: https://docs.google.com/document/d/1IQLEWRdRCeRtz5B2nCC2UWaZKG_pjsGUqOx_2GD0J_A/edit?tab=t.0
